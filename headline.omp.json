@@ -1,0 +1,135 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "type": "prompt",
+      "segments": [
+        {
+          "foreground_templates": [
+            "{{ if .SSHSession }}magenta{{ end }}",
+            "red"
+          ],
+          "style": "plain",
+          "type": "session",
+          "template": "<b><o>{{ .UserName }}</o></b>"
+        },
+        {
+          "foreground": "darkGray",
+          "style": "plain",
+          "type": "text",
+          "template": "<o> @ </o>"
+        },
+        {
+          "foreground": "yellow",
+          "style": "plain",
+          "type": "session",
+          "template": "<b><o>{{ .HostName }}</o></b><darkGray><o>: </o></>"
+        },
+        {
+          "foreground": "blue",
+          "style": "plain",
+          "type": "path",
+          "template": "<b><o>{{ .PWD }}</o></b>"
+        }
+      ]
+    },
+    {
+      "alignment": "right",
+      "type": "prompt",
+      "filler": "<darkGray><o> </o></>",
+      "segments": [
+        {
+          "foreground": "darkGray",
+          "style": "plain",
+          "type": "text",
+          "template": "<o> </o>",
+          "interactive": true
+        }
+      ]
+    },
+    {
+      "alignment": "right",
+      "type": "prompt",
+      "segments": [
+        {
+          "foreground": "cyan",
+          "style": "accordion",
+          "type": "git",
+          "properties": {
+            "branch_icon": ""
+          },
+          "template": "<b><o>{{ url .HEAD .UpstreamURL }}</o></b>"
+        },
+        {
+          "foreground": "darkGray",
+          "style": "accordion",
+          "type": "git",
+          "properties": {
+            "fetch_status": true,
+            "fetch_stash_count": true
+          },
+          "template": "{{ if or .Staging.Changed (lt .Staging.Modified .Working.Modified) (and .Working.Changed (not .Staging.Modified)) .Ahead .Behind (gt .StashCount 0) }}<o> [</o>{{ end }}"
+        },
+        {
+          "foreground": "magenta",
+          "style": "accordion",
+          "type": "git",
+          "properties": {
+            "fetch_status": true
+          },
+          "template": "{{ if or .Staging.Changed (lt .Staging.Modified .Working.Modified) (and .Working.Changed (not .Staging.Modified)) }}<b><o>{{ if .Staging.Changed }}+{{ end }}{{ if lt .Staging.Modified .Working.Modified }}!{{ end }}{{ if and .Working.Changed (not .Staging.Modified) }}?{{ end }}</o></b>{{ end }}"
+        },
+        {
+          "foreground": "magenta",
+          "style": "accordion",
+          "type": "git",
+          "properties": {
+            "fetch_status": true
+          },
+          "template": "{{ if or .Ahead .Behind }}<b><o>{{ if gt .Behind 0 }}↓{{ end }}{{ if gt .Ahead 0 }}↑{{ end }}{{ if eq .Behind .Ahead }}↕{{ end }}</o></b>{{ end }}"
+        },
+        {
+          "foreground": "magenta",
+          "style": "accordion",
+          "type": "git",
+          "properties": {
+            "fetch_status": true,
+            "fetch_stash_count": true
+          },
+          "template": "{{ if gt .StashCount 0 }}<b><o>*</o></b>{{ end }}"
+        },
+        {
+          "foreground": "darkGray",
+          "style": "accordion",
+          "type": "git",
+          "properties": {
+            "fetch_status": true,
+            "fetch_stash_count": true
+          },
+          "template": "{{ if or .Staging.Changed (lt .Staging.Modified .Working.Modified) (and .Working.Changed (not .Staging.Modified)) .Ahead .Behind (gt .StashCount 0) }}<o>] </o>{{ end }}"
+        }
+      ]
+    },
+    {
+      "alignment": "left",
+      "type": "prompt",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "default",
+          "style": "plain",
+          "type": "os",
+          "properties": {
+            "windows": ">",
+            "linux": "{{ if .Root }}#{{ else }}${{ end }}",
+            "macos": "%"
+          },
+          "template": "{{ .Icon }} "
+        }
+      ]
+    }
+  ],
+  "final_space": false,
+  "version": 2
+}
