@@ -30,6 +30,10 @@
           "foreground": "blue",
           "style": "plain",
           "type": "path",
+          "properties": {
+            "folder_separator_icon": "/",
+            "style": "full"
+          },
           "template": "<b><o>{{ .Path }}</o></b>"
         }
       ]
@@ -117,17 +121,30 @@
       "newline": true,
       "segments": [
         {
-          "foreground": "default",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}red{{ end }}",
+            "default"
+          ],
           "style": "plain",
           "type": "text",
-          "template": "{{ if .Root }}#{{ else }}${{ end }} "
+          "template": "{{ if eq .OS \"darwin\" }}%{{ else if eq .OS \"windows\" }}>{{ else }}{{ if .Root }}#{{ else }}${{ end }}{{ end }} "
         }
       ]
     }
   ],
   "secondary_prompt": {
-    "foreground": "default",
-    "template": "{{ if .Root }}#{{ else }}${{ end }} "
+    "foreground_templates": [
+      "{{ if gt .Code 0 }}red{{ end }}",
+      "default"
+    ],
+    "template": "{{ if eq .OS \"darwin\" }}%{{ else if eq .OS \"windows\" }}>{{ else }}{{ if .Root }}#{{ else }}${{ end }}{{ end }} "
+  },
+  "transient_prompt": {
+    "foreground_templates": [
+      "{{ if gt .Code 0 }}red{{ end }}",
+      "default"
+    ],
+    "template": "<default>{{ .PWD }}</>{{ if eq .OS \"darwin\" }}%{{ else if eq .OS \"windows\" }}>{{ else }}{{ if .Root }}#{{ else }}${{ end }}{{ end }} "
   },
   "final_space": false,
   "version": 2
