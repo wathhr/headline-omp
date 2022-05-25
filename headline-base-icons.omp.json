@@ -8,11 +8,12 @@
         {
           "foreground_templates": [
             "{{ if .SSHSession }}magenta{{ end }}",
+            "{{ if .WSL }}:lightMagenta{{ end }}",
             "red"
           ],
           "style": "plain",
           "type": "session",
-          "template": "<b><o>{{ .UserName }}</o></b>"
+          "template": "<b><o> {{ .UserName }}</o></b>"
         },
         {
           "foreground": "darkGray",
@@ -24,13 +25,16 @@
           "foreground": "yellow",
           "style": "plain",
           "type": "session",
-          "template": "<b><o>{{ .HostName }}</o></b><darkGray><o>: </o></>"
+          "template": "<b><o> {{ .HostName }}</o></b><darkGray><o>: </o></>"
         },
         {
           "foreground": "blue",
           "style": "plain",
           "type": "path",
-          "template": "<b><o>{{ .Path }}</o></b>"
+          "properties": {
+            "style": "full"
+          },
+          "template": "<b><o> {{ .Path }}</o></b>"
         }
       ]
     },
@@ -57,7 +61,7 @@
           "style": "accordion",
           "type": "git",
           "properties": {
-            "branch_icon": ""
+            "branch_icon": " "
           },
           "template": "<b><o>{{ url .HEAD .UpstreamURL }}</o></b>"
         },

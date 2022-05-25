@@ -13,7 +13,7 @@
           ],
           "style": "plain",
           "type": "session",
-          "template": "<b><o>{{ .UserName }}</o></b>"
+          "template": "<b><o> {{ .UserName }}</o></b>"
         },
         {
           "foreground": "darkGray",
@@ -25,7 +25,7 @@
           "foreground": "yellow",
           "style": "plain",
           "type": "session",
-          "template": "<b><o>{{ .HostName }}</o></b><darkGray><o>: </o></>"
+          "template": "<b><o> {{ .HostName }}</o></b><darkGray><o>: </o></>"
         },
         {
           "foreground": "blue",
@@ -35,7 +35,7 @@
             "folder_separator_icon": "/",
             "style": "full"
           },
-          "template": "<b><o>{{ .Path }}</o></b>"
+          "template": "<b><o> {{ .Path }}</o></b>"
         }
       ]
     },
@@ -62,7 +62,7 @@
           "style": "accordion",
           "type": "git",
           "properties": {
-            "branch_icon": ""
+            "branch_icon": " "
           },
           "template": "<b><o>{{ url .HEAD .UpstreamURL }}</o></b>"
         },

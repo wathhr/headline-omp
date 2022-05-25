@@ -32,7 +32,6 @@
           "style": "plain",
           "type": "path",
           "properties": {
-            "folder_separator_icon": "/",
             "style": "full"
           },
           "template": "<b><o>{{ .Path }}</o></b>"
@@ -122,30 +121,17 @@
       "newline": true,
       "segments": [
         {
-          "foreground_templates": [
-            "{{ if gt .Code 0 }}red{{ end }}",
-            "default"
-          ],
+          "foreground": "default",
           "style": "plain",
           "type": "text",
-          "template": "{{ if eq .OS \"darwin\" }}%{{ else if eq .OS \"windows\" }}>{{ else }}{{ if .Root }}#{{ else }}${{ end }}{{ end }} "
+          "template": "{{ if .Root }}#{{ else }}${{ end }} "
         }
       ]
     }
   ],
   "secondary_prompt": {
-    "foreground_templates": [
-      "{{ if gt .Code 0 }}red{{ end }}",
-      "default"
-    ],
-    "template": "{{ if eq .OS \"darwin\" }}%{{ else if eq .OS \"windows\" }}>{{ else }}{{ if .Root }}#{{ else }}${{ end }}{{ end }} "
-  },
-  "transient_prompt": {
-    "foreground_templates": [
-      "{{ if gt .Code 0 }}red{{ end }}",
-      "default"
-    ],
-    "template": "<default>{{ .PWD }}</>{{ if eq .OS \"darwin\" }}%{{ else if eq .OS \"windows\" }}>{{ else }}{{ if .Root }}#{{ else }}${{ end }}{{ end }} "
+    "foreground": "default",
+    "template": "{{ if .Root }}#{{ else }}${{ end }} "
   },
   "final_space": false,
   "version": 2
