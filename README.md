@@ -4,7 +4,7 @@ A port of the [ZSH Headline theme](https://github.com/Moarram/headline/) for [Oh
 ![Comparison](./assets/comparison.png)
 
 ## Installation
-Take a look at the official [oh My Posh Docs](https://ohmyposh.dev/docs/)!
+Take a look at the official [Oh My Posh Docs](https://ohmyposh.dev/docs/)!
 
 ## Variations
 Information about the different variations.
@@ -18,7 +18,7 @@ Information about the different variations.
 
 ## Bugs
 1. On Windows, the headline doesn't render anywhere but in Windows Terminal, unsure why this really happens.
-2. When the prompt is bigger than the terminal itself, the prompt wraps to the next line, rather than creating a separator and cutting off the path, like the original theme. As far as I can tell; currently unable to be implemented.
+2. When the prompt is bigger than the terminal itself, the prompt wraps to the next line, rather than creating a separator and cutting off the path, like on the original theme.
 3. The prompt doesn't cover the entire line, leaving a gap at the end.
 
 ## Credits
